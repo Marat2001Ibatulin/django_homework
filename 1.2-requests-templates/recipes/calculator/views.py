@@ -29,31 +29,15 @@ DATA = {
 #   }
 # }
 
-def calc_omlet(request):
-    servings = int(request.GET.get('servings', 1))
-    context = {'recipe': {
-        'яйца, шт': 2 * servings,
-        'молоко, л': 0.1 * servings,
-        'соль, ч.л.': 0.5 * servings,
-    }}
-    return render(request, 'calculator/index.html', context)
-
-def calc_pasta(request):
-    servings = int(request.GET.get('servings', 1))
-    context = {'recipe': {
-        'макароны, г': 0.3 * servings,
-        'сыр, г': 0.05 * servings,
-    }}
-    return render(request, 'calculator/index.html', context)
-
-def calc_buter(request):
-    servings = int(request.GET.get('servings', 1))
-    context = {'recipe': {
-        'хлеб, ломтик': 1 * servings,
-        'колбаса, ломтик': 1 * servings,
-        'сыр, ломтик': 1 * servings,
-        'помидор, ломтик': 1 * servings,
-    }}
+def calc(request, recipe):
+    servings = int(request.GET.get('servings',1))
+    correct_data = DATA.get(recipe).copy()
+    if correct_data and servings != 1:
+        for ingridient in correct_data:
+            correct_data[ingridient] *= servings
+    context = {
+        'recipe':  correct_data
+    }
     return render(request, 'calculator/index.html', context)
 
 
