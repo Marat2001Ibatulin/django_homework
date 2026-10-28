@@ -1,0 +1,34 @@
+GET  http://127.0.0.1:8000/api/sensors
+
+###
+POST http://127.0.0.1:8000/api/sensors/add/
+Content-Type: application/json
+
+{
+  "name": "EDR38",
+  "description": "Датчик у подвала"
+}
+
+###
+
+PATCH http://127.0.0.1:8000/api/sensors/1/
+Content-Type: application/json
+
+{
+  "description": "Перенес обратно"
+}
+
+###
+
+GET http://127.0.0.1:8000/api/sensors/4/
+
+###
+
+POST http://127.0.0.1:8000/api/measurements/add/
+Content-Type: application/json
+
+{
+    "sensor_number": 4,
+  "temperature": 29.5,
+  
+}

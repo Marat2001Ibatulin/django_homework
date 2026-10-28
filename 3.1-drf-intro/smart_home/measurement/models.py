@@ -5,8 +5,9 @@ class Sensor(models.Model):
     description = models.TextField(default='')
 
 class Measurement(models.Model):
-    sensor_id = models.ForeignKey(Sensor, on_delete=models.CASCADE)
+    sensor_number = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='measurements')
     temperature = models.FloatField()
     created_at = models.TimeField(auto_now_add=True)
     updated_at = models.TimeField(auto_now=True)
+    image = models.ImageField(upload_to='measurements/', null=True, blank=True)
 
