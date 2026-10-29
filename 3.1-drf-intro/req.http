@@ -1,4 +1,4 @@
-GET  http://127.0.0.1:8000/api/sensors
+GET  http://127.0.0.1:8000/api/v1/stocks/?products=3
 
 ###
 POST http://127.0.0.1:8000/api/sensors/add/
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:8000/api/sensors/4/
+GET  http://127.0.0.1:8000/api/v1/stocks/4/
 
 ###
 
