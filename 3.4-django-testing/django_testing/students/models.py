@@ -1,3 +1,5 @@
+from wsgiref.validate import validator
+
 from django.db import models
 
 
@@ -17,4 +19,5 @@ class Course(models.Model):
     students = models.ManyToManyField(
         Student,
         blank=True,
+        validator(Max)
     )
